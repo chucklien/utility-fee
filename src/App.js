@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { getThisPeriodFee } from './util';
+
 class App extends Component {
   render() {
     return (
@@ -19,6 +21,17 @@ class App extends Component {
           >
             Learn React
           </a>
+          {
+            getThisPeriodFee(
+              781.4,
+              1797.8,
+              2010,
+              7967.7,
+              57.0,
+              724,
+              370,
+            )
+          }
         </header>
       </div>
     );
