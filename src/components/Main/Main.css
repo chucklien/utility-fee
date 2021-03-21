@@ -1,5 +1,4 @@
 .Main {
-  text-align: center;
 }
 
 .Main-logo {
@@ -8,7 +7,6 @@
 }
 
 .Main-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

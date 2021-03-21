@@ -1,0 +1,27 @@
+.Form-electricity-meters-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Form-electricity-meters-title img {
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.Form-divider {
+  border: 1px dashed gray;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.Input-adornment-icon {
+  width: 15px;
+  height: auto;
+}
+
+.Form-clear {
+  margin-left: auto;
+}
