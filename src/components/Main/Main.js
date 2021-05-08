@@ -4,7 +4,6 @@ import { ThemeProvider } from '@material-ui/styles';
 import { CssBaseline, createMuiTheme } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-import { getThisPeriodFee } from 'utils/getThisPeriodFee';
 import Header from 'components/Header';
 import CalculatForm from 'components/CalculatForm';
 import './Main.css';
@@ -25,7 +24,7 @@ const Main = () => {
         <Header />
         <CalculatForm onCalculated={setResult} />
         <Typography variant="subtitle2" gutterBottom>
-          {result.total}
+          {result?.total}
         </Typography>
       </div>
     </ThemeProvider>

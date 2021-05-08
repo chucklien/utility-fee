@@ -13,10 +13,16 @@ export const getThisPeriodFee = curry(
   ) => {
     const eleFeePerkwh = Number(electricFee) / Number(periodElectrickWh);
     const usedEle = Number(currentElectricMeter) - Number(lastElectricMeter);
-    const eleFee = eleFeePerkwh * usedEle + publicElectricFee / 2;
+    const subEleFee = eleFeePerkwh * usedEle;
+    const eleFee = subEleFee + publicElectricFee / 2;
+    const gasAndWaterFee = (Number(gasFee) + Number(waterFee)) / 2;
     return {
-      total: (eleFee + (Number(gasFee) + Number(waterFee)) / 2).toFixed(2),
+      total: (eleFee + gasAndWaterFee).toFixed(2),
+      subEleFee,
+      eleFee,
       eleFeePerkwh,
+      usedEle,
+      gasAndWaterFee,
     };
   },
 );

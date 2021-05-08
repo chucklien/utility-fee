@@ -15,6 +15,7 @@ import gasImage from 'assets/gas.png';
 import waterImage from 'assets/water.png';
 import electricityImage from 'assets/electricity.png';
 import clearImage from 'assets/clear.png';
+import { outputTemplate } from 'utils/template';
 import './CalculatForm.css';
 
 const applyToSpacing = value =>
@@ -89,6 +90,17 @@ const CalculatForm = ({ onCalculated }) => {
       waterFee,
     );
     onCalculated(result);
+    const template = outputTemplate({
+      currentElectricMeter,
+      lastElectricMeter,
+      electricFee,
+      periodElectrickWh,
+      publicElectricFee,
+      gasFee,
+      waterFee,
+      ...result,
+    });
+    navigator.clipboard.writeText(template);
   };
 
   return (
@@ -148,6 +160,38 @@ const CalculatForm = ({ onCalculated }) => {
       </Typography>
       <TextField
         required
+        className={classes.halfTextField}
+        label="Electricity"
+        placeholder="1234"
+        name="electricFee"
+        value={utilityMeta['electricFee']}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <img className="Input-adornment-icon" src={electricityImage} alt="flash" />
+            </InputAdornment>
+          ),
+        }}
+        onChange={onFieldChange}
+      />
+      <TextField
+        required
+        className={classes.halfTextField}
+        label="Public fee"
+        placeholder="1234"
+        name="publicElectricFee"
+        value={utilityMeta['publicElectricFee']}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <img className="Input-adornment-icon" src={publicImage} alt="earth" />
+            </InputAdornment>
+          ),
+        }}
+        onChange={onFieldChange}
+      />
+      <TextField
+        required
         className={classes.textField}
         label="Water"
         fullWidth
@@ -177,38 +221,6 @@ const CalculatForm = ({ onCalculated }) => {
           startAdornment: (
             <InputAdornment position="start">
               <img className="Input-adornment-icon" src={gasImage} alt="gas" />
-            </InputAdornment>
-          ),
-        }}
-        onChange={onFieldChange}
-      />
-      <TextField
-        required
-        className={classes.halfTextField}
-        label="Electricity"
-        placeholder="1234"
-        name="electricFee"
-        value={utilityMeta['electricFee']}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <img className="Input-adornment-icon" src={electricityImage} alt="flash" />
-            </InputAdornment>
-          ),
-        }}
-        onChange={onFieldChange}
-      />
-      <TextField
-        required
-        className={classes.halfTextField}
-        label="Public fee"
-        placeholder="1234"
-        name="publicElectricFee"
-        value={utilityMeta['publicElectricFee']}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <img className="Input-adornment-icon" src={publicImage} alt="earth" />
             </InputAdornment>
           ),
         }}
